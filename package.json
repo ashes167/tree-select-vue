@@ -1,8 +1,8 @@
 {
-  "name": "tree-select-vue",
-  "version": "1.0.0",
+  "name": "tree-select-infinite",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/treeSelect.js",
   "author": "pluto",
   "license": "ISC",
   "scripts": {

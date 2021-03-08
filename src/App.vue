@@ -1,36 +1,48 @@
 <template>
   <div id="app">
-    <tree :data="data"></tree>
+    <tree 
+      v-model="checked"
+      :treeData="list"
+      :filterCheckedNodes="filterCheckedNodes"
+      :formatTreeNode="formatTreeNode"
+      :formatTag="formatTag"
+    ></tree>
   </div>
 </template>
 
 <script>
 import tree from './components/tree.vue'
+import data from './data.json'
 
 export default {
   components: {
     tree
   },
   data() {
-    const item = {
-      id: 1,
-      label: 1,
-      value: 1,
-      children: [
-        {
-          id: 2,
-          label: 2,
-          value: 2
-        }
-      ]
-    }
-    let data = []
-    for (let i = 0; i < 1000; i++) {
-      data.push(item)
-    }
     return {
-      data
+      list: [],
+      checked: []
     }
+  },
+  methods: {
+    init(v) {
+      this.list = data
+    },
+    filterCheckedNodes(checked) {
+      // 可以过滤checked
+      return checked
+    },
+    formatTag(tag) {
+      // 格式化展示的tag
+      return tag.label + ' - ' + tag.level
+    },
+    formatTreeNode(node) {
+      // 格式化展示的tree node
+      return node.label + ' ' + node.value
+    }
+  },
+  mounted() {
+    this.init()
   }
 }
 </script>
