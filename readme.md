@@ -1,9 +1,8 @@
 # tree-select-vue
 
-> vue2.X  Element 
-
 ## 说明
-支持无限滚动、多级菜单、多选以及前端搜索的```tree-select```组件
+支持无限滚动、多级菜单、多选以及前端搜索的```tree-select```组件 <br/>
+![image](https://github.com/ashes167/tree-select-vue/blob/master/screenshot.gif)
 
 ## 使用方式
 **注意⚠️:组件依赖于element-ui(版本需大于10.X)** <br/>
@@ -20,6 +19,7 @@
         ></tree-select-infinite>
       </div>
     </template>
+    ```
 
     <script>
     import treeSelectInfinite from 'tree-select-infinite'
@@ -50,3 +50,5 @@
 3. ```npm install```
 4. ```npm run dev```
 5. 构建：```npm run build```
+
+  ```
