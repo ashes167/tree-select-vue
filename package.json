@@ -1,10 +1,11 @@
 {
   "name": "tree-select-infinite",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/treeSelect.js",
   "author": "pluto",
   "license": "ISC",
+  "keywords": ["tree", "select", "infinite", "element-ui"],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
