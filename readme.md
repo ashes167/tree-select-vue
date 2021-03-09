@@ -53,7 +53,7 @@
 
 ## 本地查看
 
-1. ```git clone https://github.com/ashes167/tree-select-vue.git``` <br/>
+1. ```git clone 项目地址``` <br/>
 2. ```cd tree-select-vue```
 3. ```npm install```
 4. ```npm run dev```
