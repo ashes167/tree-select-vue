@@ -15,51 +15,55 @@
           </template>
         </el-tag>
         <input
+          @click="toggleOption"
           type="text"
           class="input-new-tag"
           v-model="filterText"
           size="small"
-          @focus="showOption = true"
         >
         <i @click="clearSelect" class="el-icon-close clear-select-btn"></i>
       </div>
-      <div class="tsv-select" v-show="showOption">
-        <div
-          class="tsv-select-container infinite-list"
-          v-infinite-scroll="load"
-        >
-          <el-tree
-            show-checkbox
-            :data="dataAvailable"
-            :props="defaultProps"
-            node-key="value"
-            default-expand-all
-            ref="tree"
-            @check-change="handleCheckChange"
+      <!-- <transition name="el-collapse-transition"> -->
+      <el-collapse-transition>
+        <div class="tsv-select" v-show="showOption">
+          <div
+            class="tsv-select-container infinite-list"
+            :infinite-scroll-immediate="false"
+            v-infinite-scroll="load"
           >
-            // 一级节点显示域名+ip
-            <span class="custom-tree-node" slot-scope="{ node, data }">
-              <template>
-                {{ formatTreeNode ? formatTreeNode(data) : data.label }}
-              </template>
-            </span>
-          </el-tree>
+            <el-tree
+              show-checkbox
+              :data="dataAvailable"
+              :props="defaultProps"
+              node-key="value"
+              default-expand-all
+              ref="tree"
+              @check-change="handleCheckChange"
+            >
+              <span class="custom-tree-node" slot-scope="{ node, data }">
+                <template>
+                  {{ formatTreeNode ? formatTreeNode(data) : data.label }}
+                </template>
+              </span>
+            </el-tree>
+          </div>
         </div>
-      </div>
+      </el-collapse-transition>
+      <!-- </transition> -->
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { Input, Tag, Scrollbar, InfiniteScroll, Tree } from 'element-ui'
+// 这里引入会极大增加打包体积
+// import Vue from 'vue'
+// import { Tag, InfiniteScroll, Tree } from 'element-ui'
+// Vue.use(InfiniteScroll)
+// Vue.component(Scrollbar.name, Scrollbar)
+// Vue.component(Tag.name, Tag)
+// Vue.component(Input.name, Input)
+// Vue.component(Tree.name, Tree)
 import { deepCopy } from '../utils/deepCopy'
-
-Vue.use(InfiniteScroll)
-Vue.component(Scrollbar.name, Scrollbar)
-Vue.component(Tag.name, Tag)
-Vue.component(Input.name, Input)
-Vue.component(Tree.name, Tree)
 
 export default {
   name: 'tree-select-infinite',
@@ -151,6 +155,9 @@ export default {
       const item = (this.dataList || []).splice(0, 5)
       this.dataAvailable.push(...item)
     },
+    toggleOption() {
+      this.showOption = !this.showOption
+    },
     setTreeCheckedKeys() {
       // 使用setCheckedNodes会选中失败,使用setCheckedKeys
       const checkedKeys = this.checkedNodes.map(m => m.value)
@@ -195,18 +202,18 @@ export default {
 
 <style scoped>
 .tsv-select {
-  height: 300px;
+  /* height: 300px; */
   width: 100%;
   opacity: 1;
   position: absolute;
   z-index: 8888;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .infinite-list {
   height: 250px;
+  padding: 10px;
   overflow-y: auto;
 }
-
 .input-new-tag {
   display: inline-flex;
   flex: 1;

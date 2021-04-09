@@ -5,14 +5,17 @@
   "main": "dist/treeSelect.js",
   "author": "pluto",
   "license": "ISC",
-  "keywords": ["tree", "select", "infinite", "element-ui"],
+  "keywords": [
+    "tree",
+    "select",
+    "infinite",
+    "element-ui"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
-  "dependencies": {
-    "vue": "^2.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -26,9 +29,10 @@
     "sass-loader": "^5.0.1",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
+    "vue": "^2.2.1",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.0",
+    "webpack": "^3.2.0",
     "webpack-dev-server": "^2.2.0"
   }
 }

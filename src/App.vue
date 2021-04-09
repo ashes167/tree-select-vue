@@ -4,7 +4,6 @@
       v-model="checked"
       :treeData="list"
       :filterCheckedNodes="filterCheckedNodes"
-      :formatTreeNode="formatTreeNode"
       :formatTag="formatTag"
     ></tree>
   </div>
@@ -12,7 +11,7 @@
 
 <script>
 import tree from './components/tree.vue'
-import data from './data.json'
+import { generateData } from './data.js'
 
 export default {
   components: {
@@ -26,19 +25,15 @@ export default {
   },
   methods: {
     init(v) {
-      this.list = data
+      this.list = generateData(100)
     },
     filterCheckedNodes(checked) {
-      // 可以过滤checked
-      return checked
+      // 只保留level为3的节点
+      return checked.filter(c => c.level === 3)
     },
     formatTag(tag) {
       // 格式化展示的tag
       return tag.label + ' - ' + tag.level
-    },
-    formatTreeNode(node) {
-      // 格式化展示的tree node
-      return node.label + ' ' + node.value
     }
   },
   mounted() {
